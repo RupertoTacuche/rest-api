@@ -4,6 +4,11 @@ import server from '../server'
 describe('GET /api', () => {
     it ('should send back a json response', async () => {
         const res = await request(server).get('/api')
-        console.log(res)
+
+        expect(res.status).toBe(200)
+        expect(res.headers['content-type']).toMatch(/json/)
+        expect(res.body.msg).toBe('Desde API')
+        //console.log(res.text)
+        //console.log(res.body.msg)
     })
 })
